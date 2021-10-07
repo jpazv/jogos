@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset='UTF-8'>
+		<title>Jogo de loteria</title>
+	</head>
+	<body>
+		<input type='number' id='numero' />
+		<input type='submit' value='adicionar' id='adicionar' />
+		<input type='submit' value='verificar' id='verificar'/>
+		<input type='submit' value='olhar numeros sorteados' id='olhar' />
+
+		<script>
+		var numerosJogador = [];
+		var acertos = 0; 
+		var lista60 = [];
+
+		for (var i = 1; i < 60; i++){
+			lista60.push(i)
+		}
+
+		function embaralhar(lista){
+			for (var i = lista.length ; i > 0; i --){
+				const j = Math.floor(Math.random()* (i+1));
+				[lista[i], lista[j]] = [lista[j], lista[i]];
+			}
+		}
+
+		embaralhar(lista60);
+		var numerosAleatorios = lista60.slice(0,5)
+
+		function adicionarNumero() { 
+			var numero = document.getElementById('numero')
+			if(numero.value <= 60){	
+				var numero = document.getElementById('numero')
+				if (numerosJogador.length == 6){
+					return alert('Você já adicionou os 6 numeros');
+				}
+				for (var a = 0; a < numerosJogador.length; a++) {
+					if(numero.value == numerosJogador[a]) {
+						alert('Número já adicionado');
+						numero.value=''
+						return;
+					}
+				}		
+				numerosJogador.push(numero.value);
+				alert('Você adicionou o número ' + numero.value);
+				numero.value = '';
+			}
+			else{
+				alert('O número jogado tem que ser menor ou igual a 60')
+			}
+		}
+
+
+		function verificarNumeros() {
+			if (numerosJogador.length == 6) {
+				var i = 0;
+				for (var a = 0 ; a < numerosAleatorios.length; a++){
+					if(numerosJogador[i] == numerosAleatorios[a]){
+						acertos += 1;
+				}		
+			}
+				i += 1
+				for (var a = 0; a < numerosAleatorios.length; a++){
+					if(numerosJogador[i] == numerosAleatorios[a]){
+						acertos += 1;
+				}		
+			}
+				i += 1
+				for (var a = 0; a < numerosAleatorios.length; a++){
+					if(numerosJogador[i] == numerosAleatorios[a]){
+						acertos += 1;
+				}		
+			}
+				i += 1
+				for (var a = 0 ; a < numerosAleatorios.length; a++){
+					if(numerosJogador[i] == numerosAleatorios[a]){
+						acertos += 1;
+				}		
+			}
+				i += 1
+				for (var a = 0 ; a < numerosAleatorios.length; a++){
+					if(numerosJogador[i] == numerosAleatorios[a]){
+						acertos += 1;
+				}		
+			}
+				i += 1
+				for (var a = 0 ; a < numerosAleatorios.length; a++){
+					if(numerosJogador[i] == numerosAleatorios[a]){
+						acertos += 1;
+				}		
+			}
+			}
+			return alert('Você acertou ' + acertos + ' números');
+		}	
+			
+		function olharNumeros() {
+			if (numerosJogador.length == 6){
+				return alert('Esses foram os números sorteados: ' + numerosAleatorios + '\n Esses foram seus números jogados: ' + numerosJogador);
+			}
+			return alert('Não foram jogados 6 números')
+			if (acertos == 6){
+				return alert('PARABÉNS, VOCE GANHOU NA LOTERIA')
+			}
+		}
+		
+			
+		var botaoClicado = document.getElementById('adicionar');
+		botaoClicado.onclick = adicionarNumero;
+
+		var botaoClicado2 = document.getElementById('verificar');
+		botaoClicado2.onclick = verificarNumeros;
+
+		var botaoClicado3 = document.getElementById('olhar');
+		botaoClicado3.onclick = olharNumeros;
+		</script>
+	</body>	
+</html>
