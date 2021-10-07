@@ -1,0 +1,17 @@
+<script>
+var i = 1;
+	var linha = parseInt(prompt("Quantas linhas terão o V?"));
+	var coluna = (linha * 2) - 1;
+	
+	for(var x = 0; x < linha; x++) {
+		for(var y = 0; y < coluna; y++) {
+			if(x == y || y == (coluna - i)) {
+				document.write("*");
+			} else {
+				document.write("_");
+			}
+		}
+		document.write("<br>");
+		i++;
+	}
+</script>

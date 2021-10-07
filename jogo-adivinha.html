@@ -1,0 +1,30 @@
+<h3> Jogo de adivinha </h3>
+
+<script>
+var numero = parseInt(prompt('Digite o intervalo que você deseja: '));
+
+function sorteia(){
+    var numero_aleatorio = Math.round(Math.random()*numero)
+	return numero_aleatorio;
+}
+
+var numero_aleatorio = sorteia();
+var tentativa = parseInt(prompt('Digite o seu palpite: '));
+
+while(tentativa != numero_aleatorio){
+    if(isNaN(tentativa)){
+	    alert('Somente números são válidos como tentativa!');
+	}
+	if(tentativa>numero_aleatorio) {
+	    alert("O tentativa " + tentativa + " é maior do que o número aleatório");
+	}	
+	if(tentativa<numero_aleatorio) {
+	     alert("O tentativa " + tentativa + " é menor do que o número aleatório");
+	}
+	var tentativa = parseInt(prompt('Digite a sua nova tentativa'));
+	if(tentativa==numero_aleatorio) {
+	    alert('Parabéns, você acertou')
+	}
+}
+mostra('O número aleatório era o ' + numero_aleatorio);
+</script>
